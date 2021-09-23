@@ -10,15 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from django.core.exceptions import ImproperlyConfigured
 from pathlib import Path
 import os
-import json
-from config import DB_PWD, SECRET_KEY
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = environ.Path(__file__)
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
+env = environ.Env()
+environ.Env.read_env()
+SECRET_KEY = env('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -85,13 +88,8 @@ WSGI_APPLICATION = 'craigslist.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'craigslist',
-        'HOST': 'localhost',
-        'USER': 'root',
-        'PASSWORD': DB_PWD
-    }
+    'default': env.db(),
+
 }
 
 
