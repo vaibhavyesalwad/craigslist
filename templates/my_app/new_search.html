@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<h2 style="text-align: center">{{ search | title }}</h2>
+
+<div class="row">
+  <div class="col s4">
+    <div class="card">
+      <div class="card-image">
+        <img src="{% static "/images/puppy.jpg" %}" />
+        <!-- <span class="card-title">Card Title</span> -->
+      </div>
+      <div class="card-content">
+        <p>Dummy text</p>
+      </div>
+      <div class="card-action">
+        <a href="#">This is a link</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s4">
+    <div class="card">
+      <div class="card-image">
+        <img src="{% static "/images/puppy.jpg" %}" />
+        <!-- <span class="card-title">Card Title</span> -->
+      </div>
+      <div class="card-content">
+        <p>Dummy text</p>
+      </div>
+      <div class="card-action">
+        <a href="#">This is a link</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s4">
+    <div class="card">
+      <div class="card-image">
+        <img src="{% static "/images/puppy.jpg" %}" />
+        <!-- <span class="card-title">Card Title</span> -->
+      </div>
+      <div class="card-content">
+        <p>Dummy text</p>
+      </div>
+      <div class="card-action">
+        <a href="#">This is a link</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
