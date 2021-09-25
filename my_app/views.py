@@ -2,6 +2,7 @@ import requests
 import re
 from django.shortcuts import render
 from bs4 import BeautifulSoup
+from . import models
 from requests.compat import quote_plus
 
 # Create your views here.
@@ -15,7 +16,7 @@ def home(request):
 
 def new_search(request):
     search = request.POST.get('search')
-
+    models.Search.objects.create(search=search)
     final_url = BASE_CRAIGSLIST_URL.format(quote_plus(search))
     response_search = requests.get(final_url)
 
@@ -44,7 +45,7 @@ def new_search(request):
             post_price = None
 
         post_location = re.sub('[()]', '', post_location)
-        post_location = post_location.split()[-1]
+        # post_location = post_location.split()[-1]
 
         response_post = requests.get(post_url)
 
