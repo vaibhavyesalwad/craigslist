@@ -5,3 +5,18 @@ body {
 h1 {
   text-align: center;
 }
+
+.card-action p {
+  text-transform: uppercase;
+  display: inline;
+  font-weight: 500;
+}
+
+.card-action {
+  position: relative;
+}
+
+.card-action a {
+  position: absolute;
+  right: 1rem;
+}

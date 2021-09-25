@@ -2,50 +2,34 @@
 <h2 style="text-align: center">{{ search | title }}</h2>
 
 <div class="row">
+  {% for post in final_postings %}
   <div class="col s4">
     <div class="card">
       <div class="card-image">
-        <img src="{% static "/images/puppy.jpg" %}" />
-        <!-- <span class="card-title">Card Title</span> -->
+        {% if post.3 %}
+        <img src="{{ post.3 }}" />
+        {% else %}
+        <picture
+          ><img src="{% static "images/Craigslist-icon.png" %}">
+        </picture>
+        {% endif %}
       </div>
       <div class="card-content">
-        <p>Dummy text</p>
+        <p>{{ post.0 }}</p>
       </div>
       <div class="card-action">
-        <a href="#">This is a link</a>
+        {% if post.4 %}
+        <p>{{ post.4 }} {{ post.2 }}</p>
+        {% else %}
+        <p>{{ post.2 }}</p>
+        {% endif %}
+        <a href="{{ post.1 }}"> Show details</a>
       </div>
     </div>
   </div>
-
-  <div class="col s4">
-    <div class="card">
-      <div class="card-image">
-        <img src="{% static "/images/puppy.jpg" %}" />
-        <!-- <span class="card-title">Card Title</span> -->
-      </div>
-      <div class="card-content">
-        <p>Dummy text</p>
-      </div>
-      <div class="card-action">
-        <a href="#">This is a link</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col s4">
-    <div class="card">
-      <div class="card-image">
-        <img src="{% static "/images/puppy.jpg" %}" />
-        <!-- <span class="card-title">Card Title</span> -->
-      </div>
-      <div class="card-content">
-        <p>Dummy text</p>
-      </div>
-      <div class="card-action">
-        <a href="#">This is a link</a>
-      </div>
-    </div>
-  </div>
+  {% endfor %} {% if not final_postings %}
+  <p>No search results found</p>
+  {% endif %}
 </div>
 
 {% endblock content %}
